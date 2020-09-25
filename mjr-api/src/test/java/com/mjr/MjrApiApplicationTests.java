@@ -1,4 +1,4 @@
-package com.mjr.mjrapi;
+package com.mjr;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

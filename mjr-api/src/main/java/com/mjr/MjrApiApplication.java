@@ -1,4 +1,4 @@
-package com.mjr.mjrapi;
+package com.mjr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
