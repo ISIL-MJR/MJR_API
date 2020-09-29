@@ -15,11 +15,13 @@ import java.util.List;
 public class ClassStudents {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_class_student")
     private Integer idClassStudent;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "is_group_class")
     private Boolean isGroupClass;
-    @Column(nullable = true)
+    @Column(nullable = true, name = "name_group_class")
     private String nameGroupClass;
-    @Column(nullable = false)
+
+    @OneToMany(mappedBy = "classStudents", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Student> studentList;
 }

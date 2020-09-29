@@ -1,4 +1,9 @@
 package com.mjr.repository;
 
-public interface ClassStudentsRepository {
+import com.mjr.model.ClassStudents;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ClassStudentsRepository extends JpaRepository<ClassStudents, Integer> {
 }

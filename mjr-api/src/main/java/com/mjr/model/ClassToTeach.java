@@ -15,15 +15,16 @@ import java.util.Date;
 public class ClassToTeach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_class")
     private Integer idClass;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "class_date")
     private Date classDate;
 
     @OneToOne
-    @JoinColumn(name="tbl_teacher", referencedColumnName="id_teacher")
+    @JoinColumn(name="id_teacher", referencedColumnName="id_teacher")
     private Teacher teacher;
 
     @OneToOne
-    @JoinColumn(name="tbl_class_students", referencedColumnName="id_class_student")
+    @JoinColumn(name="id_class_student", referencedColumnName="id_class_student")
     private ClassStudents classStudents;
 }
