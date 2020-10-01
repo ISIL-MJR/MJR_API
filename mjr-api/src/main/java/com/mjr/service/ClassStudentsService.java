@@ -19,6 +19,7 @@ public class ClassStudentsService implements GenericService<ClassStudents, Integ
 
     @Override
     public void create(ClassStudents classStudents) {
+        classStudents.addStudents(classStudents.getStudents());
         classStudentsRepository.save(classStudents);
     }
 

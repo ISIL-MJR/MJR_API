@@ -1,9 +1,9 @@
 package com.mjr.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,6 +29,7 @@ public class Student {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_class_student")
+    @JsonIgnore
     private ClassStudents classStudents;
 
 }

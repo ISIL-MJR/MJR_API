@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -23,5 +24,13 @@ public class ClassStudents {
     private String nameGroupClass;
 
     @OneToMany(mappedBy = "classStudents", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Student> studentList;
+    private List<Student> students;
+
+    public void addStudents(List<Student> studentList) {
+        students = new ArrayList<>();
+        for (Student s : studentList) {
+            s.setClassStudents(this);
+            this.students.add(s);
+        }
+    }
 }
