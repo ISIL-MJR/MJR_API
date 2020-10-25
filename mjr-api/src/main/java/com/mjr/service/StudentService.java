@@ -37,4 +37,12 @@ public class StudentService implements GenericService<Student, Integer>{
     public Student findById(Integer id) {
         return studentRepository.findById(id).orElse(null);
     }
+
+    public List<Student> getAllByTeacher(Integer idTeacher){
+        return studentRepository.getAllStudentsOfTeacher(idTeacher);
+    }
+
+    public List<Student> getAllByTeacherInClass(Integer idTeacher, Integer idClass){
+        return studentRepository.getAllStudentsOfTeacherInClass(idTeacher, idClass);
+    }
 }

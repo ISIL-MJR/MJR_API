@@ -33,13 +33,14 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="0e590582-9b3f-4f67-862a-9abbbef0644e">
-      <console name="MJR-DB" type="STANDARD" schema="public" session="Main"><![CDATA[select
-    tctt.class_date,
-    tctt.id_class,
-    tctt.id_class_student,
-    tctt.id_teacher
+      <console name="MJR-DB" type="STANDARD" schema="public" session="Main"><![CDATA[select distinct
+    s.*
 from
-    tbl_class_to_teach tctt;]]></console>
+    tbl_student s
+inner join tbl_class_students cs on s.id_class_student = cs.id_class_student
+inner join tbl_class_to_teach ct on cs.id_class_student = ct.id_class_student
+inner join tbl_teacher t on ct.id_teacher = t.id_teacher
+where t.id_teacher = '2' and ct.id_class_student = '2';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

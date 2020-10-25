@@ -1,14 +1,13 @@
 package com.mjr.resource;
 
-import com.mjr.model.ClassStudents;
 import com.mjr.model.ClassToTeach;
-import com.mjr.service.ClassStudentsService;
 import com.mjr.service.ClassToTeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -62,5 +61,41 @@ public class ClassToTeachResource {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(currentClassToTeach, HttpStatus.OK);
+    }
+
+    @GetMapping("/class-to-teach/by-teacher-range/{id}&{min}&{max}")
+    public ResponseEntity getAllByTeacherAndDateRange(@PathVariable Integer id, @PathVariable String min, @PathVariable String max){
+        List<ClassToTeach> classToTeaches = classToTeachService.getAllClassesOfTeacherInDateRange(id, Date.valueOf(min), Date.valueOf(max));
+        if (classToTeaches.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(classToTeaches ,HttpStatus.OK);
+    }
+
+    @GetMapping("/class-to-teach/by-teacher-today/{id}")
+    public ResponseEntity getAllByTeacherToday(@PathVariable Integer id){
+        List<ClassToTeach> classToTeaches = classToTeachService.getAllClassesOfTeacherInThisDay(id);
+        if (classToTeaches.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(classToTeaches ,HttpStatus.OK);
+    }
+
+    @GetMapping("/class-to-teach/by-teacher-week/{id}")
+    public ResponseEntity getAllByTeacherThisWeek(@PathVariable Integer id){
+        List<ClassToTeach> classToTeaches = classToTeachService.getAllClassesOfTeacherInThisWeek(id);
+        if (classToTeaches.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(classToTeaches ,HttpStatus.OK);
+    }
+
+    @GetMapping("/class-to-teach/by-teacher-month/{id}")
+    public ResponseEntity getAllByTeacherThisMonth(@PathVariable Integer id){
+        List<ClassToTeach> classToTeaches = classToTeachService.getAllClassesOfTeacherInThisMonth(id);
+        if (classToTeaches.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(classToTeaches ,HttpStatus.OK);
     }
 }

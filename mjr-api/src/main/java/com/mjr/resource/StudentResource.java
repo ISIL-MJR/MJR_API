@@ -63,4 +63,22 @@ public class StudentResource {
         }
         return new ResponseEntity(currentStudent, HttpStatus.OK);
     }
+
+    @GetMapping("/students/by-teacher/{teacher}")
+    public ResponseEntity getAllByTeacher(@PathVariable Integer teacher){
+        List<Student> students = studentService.getAllByTeacher(teacher);
+        if (students.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(students ,HttpStatus.OK);
+    }
+
+    @GetMapping("/students/by-teacher-class/{teacher}&{classId}")
+    public ResponseEntity getAllByTeacherInClass(@PathVariable Integer teacher,@PathVariable Integer classId){
+        List<Student> students = studentService.getAllByTeacherInClass(teacher, classId);
+        if (students.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(students ,HttpStatus.OK);
+    }
 }
