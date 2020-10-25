@@ -27,4 +27,14 @@ public class ClassToTeach {
     @OneToOne
     @JoinColumn(name="id_class_student", referencedColumnName="id_class_student")
     private ClassStudents classStudents;
+
+    @Override
+    public String toString() {
+        return "ClassToTeach{" +
+                "idClass=" + idClass +
+                ", classDate=" + classDate +
+                ", teacher=" + teacher +
+                ", classStudents=" + classStudents +
+                '}';
+    }
 }

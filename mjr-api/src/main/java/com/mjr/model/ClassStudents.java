@@ -33,4 +33,13 @@ public class ClassStudents {
             this.students.add(s);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ClassStudents{" +
+                "idClassStudent=" + idClassStudent +
+                ", isGroupClass=" + isGroupClass +
+                ", nameGroupClass='" + nameGroupClass + '\'' +
+                '}';
+    }
 }

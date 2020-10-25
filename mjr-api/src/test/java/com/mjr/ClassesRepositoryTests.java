@@ -19,36 +19,8 @@ import java.util.Date;
 public class ClassesRepositoryTests {
     @Autowired
     ClassToTeachRepository classToTeachRepository;
-    @Autowired
-    TeacherRepository teacherRepository;
-    @Autowired
-    ClassStudentsRepository classStudentsRepository;
-
     @Test
-    void tryout(){
-        Teacher teacher = new Teacher();
-        teacher.setDateOfBirth(Date.from(Instant.now()));
-        teacher.setDocumentNumber("111");
-        teacher.setDocumentType("tt");
-        teacher.setEmail("111");
-        teacher.setPassword("44");
-        teacher.setPhoneNumber("555");
-        teacher.setFirstName("Juan");
-        teacher.setLastName("One");
-
-        ClassStudents classStudents = new ClassStudents();
-        classStudents.setIsGroupClass(true);
-        classStudents.setNameGroupClass("Tests");
-
-        ClassToTeach classToTeach = new ClassToTeach();
-        classToTeach.setTeacher(teacher);
-        classToTeach.setClassStudents(classStudents);
-        classToTeach.setClassDate(java.sql.Date.valueOf(LocalDate.now()));
-
-        classStudentsRepository.save(classStudents);
-        teacherRepository.save(teacher);
-        classToTeachRepository.save(classToTeach);
-
-        System.out.print(classToTeachRepository.getAllClassesByTeacherAndDate(1, java.sql.Date.valueOf(LocalDate.MIN), java.sql.Date.valueOf(LocalDate.MAX)));
+    void tryGetClassesByTeacherAndDateRage(){
+        System.out.print(classToTeachRepository.getAllClassesByTeacherAndDate(1, java.sql.Date.valueOf("1999-09-09"), java.sql.Date.valueOf("2021-07-09")));
     }
 }
