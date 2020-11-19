@@ -81,4 +81,22 @@ public class StudentResource {
         }
         return new ResponseEntity(students ,HttpStatus.OK);
     }
+
+    @GetMapping("/students/status/{id}&{status}")
+    public ResponseEntity setStatus(@PathVariable Integer id, @PathVariable String status){
+        Student modStudent = studentService.changeStatusById(id, status);
+        if (modStudent == null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(modStudent, HttpStatus.OK);
+    }
+
+    @GetMapping("/students/disable/{id}")
+    public ResponseEntity disableStudent(@PathVariable Integer id){
+        Student modStudent = studentService.changeStatusById(id, "Retirado");
+        if (modStudent == null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(modStudent, HttpStatus.OK);
+    }
 }

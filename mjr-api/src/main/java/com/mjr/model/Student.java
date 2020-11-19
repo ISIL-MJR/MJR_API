@@ -27,6 +27,8 @@ public class Student {
     @Column(nullable = false, name= "student_level")
     private String studentLevel;
 
+    private String status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_class_student")
     @JsonIgnore

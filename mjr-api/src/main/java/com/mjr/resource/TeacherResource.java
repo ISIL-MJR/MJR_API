@@ -1,8 +1,6 @@
 package com.mjr.resource;
 
-import com.mjr.model.Student;
 import com.mjr.model.Teacher;
-import com.mjr.service.StudentService;
 import com.mjr.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,5 +60,23 @@ public class TeacherResource {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(currentTeacher, HttpStatus.OK);
+    }
+
+    @GetMapping("/teachers/status/{id}&{status}")
+    public ResponseEntity setStatus(@PathVariable Integer id, @PathVariable String status){
+        Teacher modTeacher = teacherService.changeStatusById(id, status);
+        if (modTeacher == null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(modTeacher, HttpStatus.OK);
+    }
+
+    @GetMapping("/teachers/disable/{id}")
+    public ResponseEntity disableStudent(@PathVariable Integer id){
+        Teacher modTeacher = teacherService.changeStatusById(id, "Inhabilitado");
+        if (modTeacher == null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(modTeacher, HttpStatus.OK);
     }
 }
