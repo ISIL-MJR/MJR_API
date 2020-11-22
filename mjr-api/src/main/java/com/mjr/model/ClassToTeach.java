@@ -19,6 +19,11 @@ public class ClassToTeach {
     private Integer idClass;
     @Column(nullable = false, name = "class_date")
     private Date classDate;
+    private String status;
+    @Column(name = "initial_time")
+    private Long initialTime;
+    @Column(name = "final_time")
+    private Long finalTime;
 
     @OneToOne
     @JoinColumn(name="id_teacher", referencedColumnName="id_teacher")
