@@ -1,6 +1,5 @@
 package com.mjr.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,13 +25,6 @@ public class Student {
     private Date dateOfBirth;
     @Column(nullable = false, name= "student_level")
     private String studentLevel;
-
     private String status;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_class_student")
-    @JsonIgnore
-    private ClassStudents classStudents;
-
 }
 

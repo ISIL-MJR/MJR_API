@@ -1,8 +1,6 @@
 package com.mjr.resource;
 
-import com.mjr.model.ClassToTeach;
 import com.mjr.model.Student;
-import com.mjr.service.ClassToTeachService;
 import com.mjr.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -80,23 +78,5 @@ public class StudentResource {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity(students ,HttpStatus.OK);
-    }
-
-    @GetMapping("/students/status/{id}&{status}")
-    public ResponseEntity setStatus(@PathVariable Integer id, @PathVariable String status){
-        Student modStudent = studentService.changeStatusById(id, status);
-        if (modStudent == null){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(modStudent, HttpStatus.OK);
-    }
-
-    @GetMapping("/students/disable/{id}")
-    public ResponseEntity disableStudent(@PathVariable Integer id){
-        Student modStudent = studentService.changeStatusById(id, "Retirado");
-        if (modStudent == null){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(modStudent, HttpStatus.OK);
     }
 }

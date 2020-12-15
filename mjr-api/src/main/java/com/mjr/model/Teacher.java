@@ -32,6 +32,7 @@ public class Teacher {
     private String email;
     @Column(nullable = false)
     private String password;
+    private String uid;
 
     private String status;
 }

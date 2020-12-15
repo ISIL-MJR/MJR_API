@@ -45,19 +45,4 @@ public class StudentService implements GenericService<Student, Integer>{
     public List<Student> getAllByTeacherInClass(Integer idTeacher, Integer idClass){
         return studentRepository.getAllStudentsOfTeacherInClass(idTeacher, idClass);
     }
-
-    public void changeStatus(Student student, String status) {
-        student.setStatus(status);
-        studentRepository.save(student);
-    }
-
-    public Student changeStatusById(Integer id, String status){
-        Student foundStudent = studentRepository.findById(id).orElse(null);
-        if (foundStudent != null){
-            foundStudent.setStatus(status);
-            studentRepository.save(foundStudent);
-            return foundStudent;
-        }
-        else return null;
-    }
 }
